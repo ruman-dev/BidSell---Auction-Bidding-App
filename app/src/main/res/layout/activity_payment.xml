@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.PaymentActivity">
+
+    <WebView
+        android:id="@+id/paymentWebView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="visible" />
+
+    <LinearLayout
+        android:id="@+id/paymentSuccessLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_margin="20dp"
+        android:weightSum="5"
+        android:visibility="gone"
+        >
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/animationView"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            app:lottie_rawRes="@raw/success_lottie"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Success! "
+            android:textSize="30sp"
+            android:gravity="center"
+            android:layout_marginTop="25dp"
+            android:textColor="#3ABC5E"
+            android:textStyle="bold"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight=".5"
+            android:gravity="center"
+            android:text="Thanks for adding balance"
+            android:textColor="#3ABC5E"
+            android:textSize="25sp"
+            android:textStyle="bold" />
+
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="15dp"
+            android:layout_marginTop="35dp"
+            app:cardBackgroundColor="@color/primaryColor"
+
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:padding="15dp"
+                android:orientation="vertical"
+                >
+
+                <TextView
+                    android:id="@+id/userName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="John Doe"
+                    android:textSize="16sp"
+                    android:textColor="@color/white"
+                    app:drawableStartCompat="@drawable/icon_profile"
+                    app:drawableTint="@color/white"
+                    android:drawablePadding="8dp"
+                    android:padding="8dp"
+                    />
+
+                <TextView
+                    android:id="@+id/paidAmount"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="2500.00"
+                    android:textSize="16sp"
+                    android:textColor="@color/white"
+                    app:drawableStartCompat="@drawable/icon_money"
+                    app:drawableTint="@color/white"
+                    android:drawablePadding="8dp"
+                    android:padding="8dp"
+                    />
+
+                <TextView
+                    android:id="@+id/userEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="ruman.dev@proton.me"
+                    android:textSize="18sp"
+                    android:textColor="@color/white"
+                    app:drawableStartCompat="@drawable/icon_event"
+                    app:drawableTint="@color/white"
+                    android:drawablePadding="8dp"
+                    android:padding="8dp"
+                    />
+
+                <TextView
+                    android:id="@+id/paidTime"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Aug 28, 2024 11:10 PM"
+                    android:textSize="18sp"
+                    android:textColor="@color/white"
+                    app:drawableStartCompat="@drawable/icon_schedule"
+                    app:drawableTint="@color/white"
+                    android:drawablePadding="8dp"
+                    android:padding="8dp"
+                    />
+
+                <TextView
+                    android:id="@+id/paymentMethod"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Aug 28, 2024 11:10 PM"
+                    android:textSize="18sp"
+                    android:textColor="@color/white"
+                    app:drawableStartCompat="@drawable/icon_schedule"
+                    app:drawableTint="@color/white"
+                    android:drawablePadding="8dp"
+                    android:padding="8dp"
+                    />
+
+                <TextView
+                    android:id="@+id/transactionId"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Aug 28, 2024 11:10 PM"
+                    android:textSize="18sp"
+                    android:textColor="@color/white"
+                    app:drawableStartCompat="@drawable/icon_schedule"
+                    app:drawableTint="@color/white"
+                    android:drawablePadding="8dp"
+                    android:padding="8dp"
+                    />
+
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/tvCountDownToRedirect"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Redirect to the Homepage within 10s..."
+            android:layout_marginTop="30dp"
+            android:gravity="center"
+            />
+
+    </LinearLayout>
+</RelativeLayout>
