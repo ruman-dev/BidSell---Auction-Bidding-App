@@ -4,6 +4,8 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.core.view.GestureDetectorCompat;
 import androidx.fragment.app.Fragment;
 
@@ -18,13 +20,18 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.auth.AuthCredential;
+import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.rumanweb.bidsell.R;
+import com.rumanweb.bidsell.activities.CreateAuctionActivity;
 import com.rumanweb.bidsell.activities.LoginActivity;
 import com.rumanweb.bidsell.activities.OnBoardingActivity;
 import com.rumanweb.bidsell.activities.PaymentActivity;
@@ -32,7 +39,7 @@ import com.rumanweb.bidsell.activities.PaymentActivity;
 import java.util.Objects;
 
 public class ProfileFragment extends Fragment {
-    TextView tvEditProfile, tvMyBids, tvCreateAuction, tvAddBalance, tvHelp, tvSettings, tvInvite, tvSignOut, tvProfileName, tvUserName, btnAvailableBalance;
+    TextView tvChangePass, tvMyBids, tvCreateAuction, tvAddBalance, tvHelp, tvSettings, tvInvite, tvSignOut, tvProfileName, tvUserName, btnAvailableBalance;
     LinearLayout profileOptions;
     RelativeLayout profileHeader;
     String edAmountStr, userFullName, userName, userEmail;
@@ -40,7 +47,6 @@ public class ProfileFragment extends Fragment {
     FirebaseAuth mAuth;
     FirebaseFirestore db;
     FirebaseUser currentUser;
-    private GestureDetectorCompat gestureDetector;
     private boolean isBalanceVisible = false;
 
     @Override
@@ -50,7 +56,7 @@ public class ProfileFragment extends Fragment {
 
         tvProfileName = myView.findViewById(R.id.tvProfileName);
         tvUserName = myView.findViewById(R.id.tvUserName);
-        tvEditProfile = myView.findViewById(R.id.tvEditProfile);
+        tvChangePass = myView.findViewById(R.id.tvChangePass);
         tvMyBids = myView.findViewById(R.id.tvMyBids);
         tvCreateAuction = myView.findViewById(R.id.tvCreateAuction);
         tvAddBalance = myView.findViewById(R.id.tvAddBalance);
@@ -76,6 +82,22 @@ public class ProfileFragment extends Fragment {
                 }
             }
         });
+
+        tvChangePass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                changePassword();
+            }
+        });
+
+
+        tvCreateAuction.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getContext(), CreateAuctionActivity.class));
+            }
+        });
+
 
         if (currentUser != null) {
             String userId = currentUser.getUid();  // Get current user ID (document ID in Firestore)
@@ -115,16 +137,27 @@ public class ProfileFragment extends Fragment {
                         .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                edAmountStr = Objects.requireNonNull(edAmount.getText()).toString();
 
-                                Intent paymentIntent = new Intent(getContext(), PaymentActivity.class);
-                                paymentIntent.putExtra("userFullName", userFullName);
-                                paymentIntent.putExtra("userEmail",userEmail);
-                                paymentIntent.putExtra("userName", userName);
-                                paymentIntent.putExtra("amount", edAmountStr);
+                                edAmountStr = edAmount.getText().toString();
 
-                                dialog.dismiss();
-                                startActivity(paymentIntent);
+                                if (edAmountStr.isEmpty()) {
+                                    edAmount.setError("Blank data cannot be accepted");
+                                } else {
+                                    if (Double.parseDouble(edAmountStr) >= 10) {
+                                        Intent paymentIntent = new Intent(getContext(), PaymentActivity.class);
+                                        paymentIntent.putExtra("userFullName", userFullName);
+                                        paymentIntent.putExtra("userEmail", userEmail);
+                                        paymentIntent.putExtra("userName", userName);
+                                        paymentIntent.putExtra("amount", edAmountStr);
+
+                                        dialog.dismiss();
+                                        startActivity(paymentIntent);
+                                    } else {
+                                        Toast.makeText(getContext(), "Amount must be greater than BDT 10", Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+
+
 
                             }
                         }).setNegativeButton("Close", new DialogInterface.OnClickListener() {
@@ -151,6 +184,7 @@ public class ProfileFragment extends Fragment {
 
         return myView;
     }
+
     private void fetchAndDisplayBalance() {
         String userId = mAuth.getCurrentUser().getUid();
 
@@ -161,7 +195,7 @@ public class ProfileFragment extends Fragment {
 
                 // Display balance if it exists
                 if (availableBalance != null) {
-                    btnAvailableBalance.setText(String.format("$%.2f", availableBalance));
+                    btnAvailableBalance.setText(String.format("৳ %.2f", availableBalance));
                     isBalanceVisible = true;  // Set flag to indicate balance is visible
 
                     // Automatically hide balance after 5 seconds
@@ -175,8 +209,92 @@ public class ProfileFragment extends Fragment {
             }
         });
     }
+
     private void hideBalance() {
         btnAvailableBalance.setText("Balance");
         isBalanceVisible = false;
+    }
+
+    private void changePassword() {
+        View changePassView = getLayoutInflater().inflate(R.layout.change_pass_layout, null);
+        TextView tvCurrentPass = changePassView.findViewById(R.id.currentPass);
+        TextView tvNewPass = changePassView.findViewById(R.id.newPass);
+        TextView tvConfirmPass = changePassView.findViewById(R.id.confirmPass);
+
+        MaterialAlertDialogBuilder changePassAlertDialog = new MaterialAlertDialogBuilder(requireContext())
+                .setTitle("Change Password")
+                .setView(changePassView)
+                .setPositiveButton("Ok", null)
+                .setNegativeButton("Close", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+
+        AlertDialog dialog = changePassAlertDialog.create();
+        dialog.show();
+
+        dialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String currentPassStr = tvCurrentPass.getText().toString();
+                String newPassStr = tvNewPass.getText().toString();
+                String confirmPassStr = tvConfirmPass.getText().toString();
+                if (!currentPassStr.isEmpty() && !newPassStr.isEmpty() && !confirmPassStr.isEmpty()) {
+                    if (!currentPassStr.equals(newPassStr)) {
+                        if (newPassStr.length() >= 8 && confirmPassStr.length() >= 8) {
+                            if (newPassStr.equals(confirmPassStr)) {
+                                if (currentUser != null) {
+                                    String userCurrentEmail = currentUser.getEmail();
+                                    assert userCurrentEmail != null;
+                                    AuthCredential credential = EmailAuthProvider.getCredential(userCurrentEmail, currentPassStr);
+
+                                    // Re-authenticate the user
+                                    currentUser.reauthenticate(credential)
+                                            .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                @Override
+                                                public void onComplete(@NonNull Task<Void> task) {
+                                                    if (task.isSuccessful()) {
+                                                        // User re-authenticated successfully, now update the password
+                                                        currentUser.updatePassword(newPassStr)
+                                                                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                                    @Override
+                                                                    public void onComplete(@NonNull Task<Void> task) {
+                                                                        if (task.isSuccessful()) {
+                                                                            // Password updated successfully
+                                                                            Toast.makeText(getContext(), "Password changed successfully", Toast.LENGTH_SHORT).show();
+                                                                            dialog.dismiss();
+                                                                        } else {
+                                                                            // An error occurred
+                                                                            Toast.makeText(getContext(), "Error changing password: " + Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
+                                                                        }
+                                                                    }
+                                                                });
+                                                    } else {
+                                                        // Old password is incorrect
+                                                        Toast.makeText(getContext(), "Authentication failed: Old password is incorrect", Toast.LENGTH_SHORT).show();
+                                                    }
+                                                }
+                                            });
+                                } else {
+                                    // No user is signed in
+                                    Toast.makeText(getContext(), "No user is signed in", Toast.LENGTH_SHORT).show();
+                                }
+                            } else {
+                                tvNewPass.setError("Password does not match!");
+                            }
+
+                        } else {
+                            Toast.makeText(getContext(), "Password must be at least 8 characters!", Toast.LENGTH_SHORT).show();
+                        }
+                    } else {
+                        tvNewPass.setError("Both passwords cannot be same");
+                    }
+                } else {
+                    Toast.makeText(getContext(), "No field can be blank!", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 }

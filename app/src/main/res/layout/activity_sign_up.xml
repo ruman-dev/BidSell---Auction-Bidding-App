@@ -62,7 +62,7 @@
                 android:id="@+id/signUp_userName_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="User Name"
+                android:hint="Username"
                 android:layout_below="@id/signUp_fullName_layout"
                 android:layout_marginTop="20dp"
                 android:layout_marginStart="15dp"
@@ -148,11 +148,33 @@
                     />
             </com.google.android.material.textfield.TextInputLayout>
 
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/signUp_confirm_password_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Confirm Password"
+                android:layout_below="@id/signUp_password_layout"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginEnd="15dp"
+                app:hintTextColor="@color/primaryColor"
+                app:boxStrokeColor="@color/primaryColor"
+                app:passwordToggleEnabled="true"
+                >
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/signUpConfirmPass"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword"
+
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+
             <FrameLayout
                 android:id="@+id/signUpLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/signUp_password_layout"
+                android:layout_below="@id/signUp_confirm_password_layout"
                 android:layout_marginTop="10dp"
                 >
                 <ProgressBar
@@ -180,108 +202,108 @@
                     android:text="Sign up" />
             </FrameLayout>
 
-            <RelativeLayout
-                android:id="@+id/signUp_divider_layout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/signUpLayout"
-                android:layout_marginTop="15dp"
-                >
+<!--            <RelativeLayout-->
+<!--                android:id="@+id/signUp_divider_layout"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_below="@id/signUpLayout"-->
+<!--                android:layout_marginTop="15dp"-->
+<!--                >-->
 
-                <TextView
-                    android:id="@+id/tvDividerSignUp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:text="SignUp with"
-                    android:textColor="#65000000"/>
+<!--                <TextView-->
+<!--                    android:id="@+id/tvDividerSignUp"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_centerInParent="true"-->
+<!--                    android:layout_marginLeft="10dp"-->
+<!--                    android:layout_marginRight="10dp"-->
+<!--                    android:text="SignUp with"-->
+<!--                    android:textColor="#65000000"/>-->
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="2dp"
-                    android:layout_centerVertical="true"
-                    android:layout_marginStart="16dp"
-                    android:layout_toStartOf="@id/tvDividerSignUp"
-                    android:background="#36000000"
-                    />
+<!--                <View-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="2dp"-->
+<!--                    android:layout_centerVertical="true"-->
+<!--                    android:layout_marginStart="16dp"-->
+<!--                    android:layout_toStartOf="@id/tvDividerSignUp"-->
+<!--                    android:background="#36000000"-->
+<!--                    />-->
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="2dp"
-                    android:layout_centerVertical="true"
-                    android:layout_marginEnd="16dp"
-                    android:layout_toEndOf="@id/tvDividerSignUp"
-                    android:background="#36000000"
-                    />
+<!--                <View-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="2dp"-->
+<!--                    android:layout_centerVertical="true"-->
+<!--                    android:layout_marginEnd="16dp"-->
+<!--                    android:layout_toEndOf="@id/tvDividerSignUp"-->
+<!--                    android:background="#36000000"-->
+<!--                    />-->
 
-            </RelativeLayout>
+<!--            </RelativeLayout>-->
 
-            <LinearLayout
-                android:id="@+id/signUpAuthWithSocialMediaLayout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/signUp_divider_layout"
-                android:weightSum="8"
-                android:layout_marginTop="20dp"
-                android:layout_marginStart="30dp"
-                android:layout_marginEnd="30dp"
-                android:gravity="center"
-                >
+<!--            <LinearLayout-->
+<!--                android:id="@+id/signUpAuthWithSocialMediaLayout"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_below="@id/signUp_divider_layout"-->
+<!--                android:weightSum="8"-->
+<!--                android:layout_marginTop="20dp"-->
+<!--                android:layout_marginStart="30dp"-->
+<!--                android:layout_marginEnd="30dp"-->
+<!--                android:gravity="center"-->
+<!--                >-->
 
-                <ImageView
-                    android:id="@+id/sigUpWithGoogle"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:src="@drawable/google"
-                    android:layout_weight="1"
-                    />
+<!--                <ImageView-->
+<!--                    android:id="@+id/sigUpWithGoogle"-->
+<!--                    android:layout_width="48dp"-->
+<!--                    android:layout_height="48dp"-->
+<!--                    android:src="@drawable/google"-->
+<!--                    android:layout_weight="1"-->
+<!--                    />-->
 
-                <ImageView
-                    android:id="@+id/sigUpWithFacebook"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:src="@drawable/facebook"
-                    android:layout_weight="1"
-                    />
+<!--                <ImageView-->
+<!--                    android:id="@+id/sigUpWithFacebook"-->
+<!--                    android:layout_width="48dp"-->
+<!--                    android:layout_height="48dp"-->
+<!--                    android:src="@drawable/facebook"-->
+<!--                    android:layout_weight="1"-->
+<!--                    />-->
 
-                <ImageView
-                    android:id="@+id/sigUpWithApple"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:src="@drawable/apple"
-                    android:layout_weight="1"
-                    />
+<!--                <ImageView-->
+<!--                    android:id="@+id/sigUpWithApple"-->
+<!--                    android:layout_width="48dp"-->
+<!--                    android:layout_height="48dp"-->
+<!--                    android:src="@drawable/apple"-->
+<!--                    android:layout_weight="1"-->
+<!--                    />-->
 
-            </LinearLayout>
+<!--            </LinearLayout>-->
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:layout_below="@id/signUpAuthWithSocialMediaLayout"
-                android:gravity="center"
-                android:layout_marginTop="15dp"
-                >
-                <TextView
-                    android:id="@+id/tvDontHaveAccount"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginEnd="5dp"
-                    android:text="Already have an account?"
-                    android:textColor="#65000000"/>
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:orientation="horizontal"-->
+<!--                android:layout_below="@id/signUpAuthWithSocialMediaLayout"-->
+<!--                android:gravity="center"-->
+<!--                android:layout_marginTop="15dp"-->
+<!--                >-->
+<!--                <TextView-->
+<!--                    android:id="@+id/tvDontHaveAccount"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginStart="10dp"-->
+<!--                    android:layout_marginEnd="5dp"-->
+<!--                    android:text="Already have an account?"-->
+<!--                    android:textColor="#65000000"/>-->
 
-                <TextView
-                    android:id="@+id/redirectToSignIn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Sign in"
-                    android:textColor="@color/primaryColor"
-                    />
+<!--                <TextView-->
+<!--                    android:id="@+id/redirectToSignIn"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="Sign in"-->
+<!--                    android:textColor="@color/primaryColor"-->
+<!--                    />-->
 
-            </LinearLayout>
+<!--            </LinearLayout>-->
 
         </RelativeLayout>
 

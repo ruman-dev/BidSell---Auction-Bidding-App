@@ -25,42 +25,50 @@
 
         <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/animationView"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="2"
             app:lottie_rawRes="@raw/success_lottie"
             app:lottie_autoPlay="true"
             app:lottie_loop="true"/>
 
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Success! "
-            android:textSize="30sp"
-            android:gravity="center"
+            android:orientation="vertical"
             android:layout_marginTop="25dp"
-            android:textColor="#3ABC5E"
-            android:textStyle="bold"
-            />
+            >
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight=".5"
-            android:gravity="center"
-            android:text="Thanks for adding balance"
-            android:textColor="#3ABC5E"
-            android:textSize="25sp"
-            android:textStyle="bold" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Success! "
+                android:textSize="30sp"
+                android:gravity="center"
+                android:textColor="#3ABC5E"
+                android:textStyle="bold"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight=".5"
+                android:gravity="center"
+                android:text="Thanks for adding balance"
+                android:textColor="#3ABC5E"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                />
+
+        </LinearLayout>
 
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:cardCornerRadius="15dp"
-            android:layout_marginTop="35dp"
             app:cardBackgroundColor="@color/primaryColor"
-
+            android:layout_marginTop="40dp"
             >
 
             <LinearLayout

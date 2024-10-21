@@ -25,7 +25,7 @@ import java.util.Objects;
 public class SignUpActivity extends AppCompatActivity {
 
     private Button signUpBtn;
-    private EditText signUpFullName, signUpEmail, signUpPass, signUpMobile, signUpUserName;
+    private EditText signUpFullName, signUpEmail, signUpPass, signUpMobile, signUpUserName, signUpConfirmPass;
     private ProgressBar progressBarSignUp;
     private FirebaseAuth auth;
     private FirebaseFirestore db;
@@ -41,6 +41,7 @@ public class SignUpActivity extends AppCompatActivity {
         signUpUserName = findViewById(R.id.signUpUserName);
         signUpEmail = findViewById(R.id.signUpEmail);
         signUpPass = findViewById(R.id.signUpPass);
+        signUpConfirmPass = findViewById(R.id.signUpConfirmPass);
         signUpMobile = findViewById(R.id.signUpMobile);
         signUpBtn = findViewById(R.id.signUpBtn);
         progressBarSignUp = findViewById(R.id.progressBarSignUp);
@@ -55,6 +56,7 @@ public class SignUpActivity extends AppCompatActivity {
                 String signUpEmail_str = signUpEmail.getText().toString().trim();
                 String signUpPass_str = signUpPass.getText().toString().trim();
                 String signUpMobile_str = signUpMobile.getText().toString().trim();
+                String signUpConfirmPass_str = signUpConfirmPass.getText().toString().trim();
 
                 if (signUpName_str.isEmpty() || signUpEmail_str.isEmpty() || signUpPass_str.isEmpty() || signUpMobile_str.isEmpty() || signUpUserName_str.isEmpty()) {
 
@@ -70,6 +72,9 @@ public class SignUpActivity extends AppCompatActivity {
                 } else if (signUpPass_str.length() < 8) {
                     closeProgress();
                     Toast.makeText(SignUpActivity.this, "Password must be at least 8 characters", Toast.LENGTH_SHORT).show();
+                } else if (!signUpPass_str.equals(signUpConfirmPass_str)) {
+                    closeProgress();
+                    Toast.makeText(SignUpActivity.this, "Password does not match yet", Toast.LENGTH_SHORT).show();
                 } else {
                     // Proceed with sign up
                     auth.createUserWithEmailAndPassword(signUpEmail_str, signUpPass_str)

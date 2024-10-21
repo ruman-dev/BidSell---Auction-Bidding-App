@@ -38,7 +38,7 @@
                 android:id="@+id/tvProfileName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="John Doe"
+                android:text="Guest"
                 android:textColor="@color/white"
                 android:textSize="20sp" />
 
@@ -46,7 +46,7 @@
                 android:id="@+id/tvUserName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="\@johndoe10"
+                android:text="\@guest_user"
                 android:textColor="@color/white"
                 android:textSize="14sp" />
         </LinearLayout>
@@ -92,11 +92,11 @@
                 app:cardCornerRadius="20dp">
 
                 <TextView
-                    android:id="@+id/tvEditProfile"
+                    android:id="@+id/tvChangePass"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="15dp"
-                    android:text="Edit profile"
+                    android:text="Change Password"
                     android:textColor="@color/black"
                     android:textSize="16sp"
                     app:drawableEndCompat="@drawable/ic_arrow_right" />
@@ -116,7 +116,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="15dp"
-                    android:text="My Bids"
+                    android:text="Transaction History"
                     android:textColor="@color/black"
                     android:textSize="16sp"
                     app:drawableEndCompat="@drawable/ic_arrow_right" />
