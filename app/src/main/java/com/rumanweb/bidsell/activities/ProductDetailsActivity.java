@@ -33,10 +33,13 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -75,7 +78,8 @@ public class ProductDetailsActivity extends AppCompatActivity {
     private SimpleDateFormat displayDateFormat, inputDateFormat;
     ProductItemModel productItemModel = null;
     private boolean isToastShown = false;
-    private double currentBid;
+    private double currentBid, availableBalance;
+
     private FirebaseAuth auth;
     private FirebaseFirestore db;
     private double productStartingPrice, biddingPrice;
@@ -166,8 +170,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
 
                         tvOpenDateSum.setText(formattedOpenDate);
                         tvCloseDateSum.setText(formattedCloseDate);
-                    } catch (
-                            ParseException e) {
+                    } catch (ParseException e) {
                         e.printStackTrace();
                     }
                     myDialog.show();
@@ -182,54 +185,108 @@ public class ProductDetailsActivity extends AppCompatActivity {
         btnPlaceBid.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // Check if the entered bidding price is valid
+                if (edMaxBid.getText().toString().isEmpty()) {
+                    Toast.makeText(ProductDetailsActivity.this, "Please enter a valid bid amount", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
                 biddingPrice = Double.parseDouble(edMaxBid.getText().toString());
                 Date currentDateTime = new Date();
                 Timestamp timestamp = new Timestamp(currentDateTime);
 
                 currentBid = Double.parseDouble(tvCurrentBid.getText().toString());
 
-                if (biddingPrice > productStartingPrice && biddingPrice > currentBid) {
-                    final HashMap<String, Object> biddingMap = new HashMap<>();
-                    biddingMap.put("productTitle", productTitle);
-                    biddingMap.put("productListingNo", listingNo);
-                    biddingMap.put("biddingPrice", biddingPrice);
-                    biddingMap.put("biddingTime", timestamp);
-                    biddingMap.put("bidderImg", R.drawable.ic_launcher_background);
+                String currentUserId = Objects.requireNonNull(auth.getCurrentUser()).getUid();
 
-                    // Add bidder details (name or email)
-                    if (auth.getCurrentUser() != null) {
-                        String bidderName = auth.getCurrentUser().getDisplayName();
-                        if (bidderName == null || bidderName.isEmpty()) {
-                            // If display name is not set, fallback to email
-                            bidderName = auth.getCurrentUser().getEmail();
+                // Fetch the available balance of the current user
+                if (currentUserId != null) {
+                    db.collection("users").document(currentUserId).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                        @Override
+                        public void onSuccess(DocumentSnapshot documentSnapshot) {
+                            if (documentSnapshot.exists()) {
+                                availableBalance = documentSnapshot.getDouble("availableBalance");
+
+                                if (availableBalance >= 0.0) {
+                                    // Check bidding conditions
+                                    if (biddingPrice > productStartingPrice && biddingPrice > currentBid) {
+                                        if (availableBalance >= biddingPrice) {
+                                            // Create a map to store the bidding details
+                                            final HashMap<String, Object> biddingMap = new HashMap<>();
+                                            biddingMap.put("productTitle", productTitle);
+                                            biddingMap.put("productListingNo", listingNo);
+                                            biddingMap.put("biddingPrice", biddingPrice);
+                                            biddingMap.put("biddingTime", timestamp);
+                                            biddingMap.put("bidderImg", R.drawable.ic_launcher_background);
+
+                                            // Add bidder details (name or email)
+                                            String bidderName = auth.getCurrentUser().getEmail();
+                                            String bidderUserName = documentSnapshot.getString("userName");
+//                                            if (bidderName == null || bidderName.isEmpty()) {
+//                                                // If display name is not set, fallback to email
+//                                                bidderName = auth.getCurrentUser().getEmail();
+//                                            }
+                                            biddingMap.put("bidderName", bidderName);
+                                            biddingMap.put("bidderUserName", bidderUserName);
+
+                                            // Log the bidder's name for debugging
+                                            Log.d("FirestoreQuery", "Bidder name: " + bidderName);
+
+                                            // Save the bid to Firestore under the biddingList collection
+                                            db.collection("biddingList")
+                                                    .document(Objects.requireNonNull(auth.getCurrentUser()).getUid())
+                                                    .collection("User")
+                                                    .add(biddingMap)
+                                                    .addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
+                                                        @Override
+                                                        public void onComplete(@NonNull Task<DocumentReference> task) {
+                                                            if (task.isSuccessful()) {
+                                                                Toast.makeText(ProductDetailsActivity.this, "Bidding Successful!", Toast.LENGTH_SHORT).show();
+                                                                finish(); // Finish the activity
+                                                            } else {
+                                                                Toast.makeText(ProductDetailsActivity.this, "Error in placing bid, please try again", Toast.LENGTH_SHORT).show();
+                                                            }
+                                                        }
+                                                    });
+
+                                        } else {
+                                            // Insufficient balance
+                                            Toast.makeText(ProductDetailsActivity.this, "Insufficient Balance! Please add balance to your account", Toast.LENGTH_SHORT).show();
+                                        }
+                                    } else {
+                                        // Invalid bidding approach (bid is less than required amounts)
+                                        Snackbar snackbar = Snackbar.make(productDetailsLayout, "Invalid bidding approach!", Snackbar.LENGTH_SHORT);
+                                        snackbar.setAction("Done", new View.OnClickListener() {
+                                                    @Override
+                                                    public void onClick(View v) {
+                                                        snackbar.dismiss();
+                                                    }
+                                                })
+                                                .setBackgroundTint(getResources().getColor(R.color.primaryColor))
+                                                .setActionTextColor(getResources().getColor(R.color.darkBlue))
+                                                .setTextColor(getResources().getColor(R.color.white))
+                                                .show();
+                                    }
+                                } else {
+                                    Toast.makeText(ProductDetailsActivity.this, "Unable to fetch balance", Toast.LENGTH_SHORT).show();
+                                }
+                            } else {
+                                Toast.makeText(ProductDetailsActivity.this, "User data not found", Toast.LENGTH_SHORT).show();
+                            }
                         }
-                        biddingMap.put("bidderName", bidderName);  // Store the bidder name
-                        Log.d("FirestoreQuery", "Bidder name: " + bidderName);
-                    }
-
-                    db.collection("biddingList").document(Objects.requireNonNull(auth.getCurrentUser()).getUid()).collection("User")
-                            .add(biddingMap).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
-                                @Override
-                                public void onComplete(@NonNull Task<DocumentReference> task) {
-                                    Toast.makeText(ProductDetailsActivity.this, "Bidding Successful!", Toast.LENGTH_SHORT).show();
-                                    finish();
-                                }
-                            });
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(ProductDetailsActivity.this, "Error fetching user data", Toast.LENGTH_SHORT).show();
+                        }
+                    });
                 } else {
-                    Snackbar snackbar = Snackbar.make(productDetailsLayout, "Invalid bidding approach!", Snackbar.LENGTH_SHORT);
-                    snackbar.setAction("Done", new View.OnClickListener() {
-                                @Override
-                                public void onClick(View v) {
-                                    snackbar.dismiss();
-                                }
-                            })
-                            .setBackgroundTint(getResources().getColor(R.color.primaryColor))
-                            .setActionTextColor(getResources().getColor(R.color.darkBlue))
-                            .setTextColor(getResources().getColor(R.color.white))
-                            .show();
+                    Toast.makeText(ProductDetailsActivity.this, "No user found! Please login first", Toast.LENGTH_SHORT).show();
                 }
             }
         });
+
+
         bidHistoryCardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -372,14 +429,19 @@ public class ProductDetailsActivity extends AppCompatActivity {
                             for (DocumentSnapshot doc : task.getResult()) {
                                 // Extract data
                                 String bidderName = doc.getString("bidderName"); // Assuming you store this
+                                String bidderUserName = doc.getString("bidderUserName"); // Assuming you store this
                                 Double bidPrice = doc.getDouble("biddingPrice");
                                 Timestamp biddingTime = doc.getTimestamp("biddingTime");
                                 String bidderImgUrl = doc.getString("bidderImgUrl");
 
                                 // Make sure bidPrice is not null
-                                if (bidPrice != null && bidderName != null) {
+                                if (bidPrice != null && bidderUserName != null) {
                                     // Add the bid to the list
-                                    bidList.add(new BidHistoryLVModel(bidderName, bidPrice, biddingTime, bidderImgUrl));
+                                    if (bidderUserName != null) {
+                                        bidList.add(new BidHistoryLVModel(bidderUserName, bidPrice, biddingTime, bidderImgUrl));
+                                    } else {
+                                        bidList.add(new BidHistoryLVModel(bidderName, bidPrice, biddingTime, bidderImgUrl));
+                                    }
                                 }
                             }
                             // Update ListView with the bid data if the bidList is not empty

@@ -29,6 +29,7 @@ public class SignUpActivity extends AppCompatActivity {
     private ProgressBar progressBarSignUp;
     private FirebaseAuth auth;
     private FirebaseFirestore db;
+    Double userInitialBalanace = 0.0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -89,6 +90,7 @@ public class SignUpActivity extends AppCompatActivity {
                                         userData.put("email", signUpEmail_str);
                                         userData.put("userName", signUpUserName_str);
                                         userData.put("mobile", signUpMobile_str);
+                                        userData.put("availableBalance", userInitialBalanace);
 
                                         db.collection("users").document(userId).set(userData)
                                                 .addOnCompleteListener(new OnCompleteListener<Void>() {

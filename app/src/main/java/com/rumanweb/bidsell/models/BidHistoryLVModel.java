@@ -3,6 +3,7 @@ import com.google.firebase.Timestamp;
 
 public class BidHistoryLVModel {
     private String bidderName;
+    private String bidderUserName;
     private double biddingPrice;
     private Timestamp biddingTime;
     private String bidderImg;
