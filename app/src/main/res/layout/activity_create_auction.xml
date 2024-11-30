@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="20dp"
+    android:orientation="vertical"
+    tools:context=".activities.CreateAuctionActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/titleCreateAuction"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Create Auction Form"
+                android:textColor="@color/primaryColor"
+                android:textSize="25sp"
+                android:textStyle="bold" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/auctionNameLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:hint="Auction Name"
+                app:boxStrokeColor="@color/primaryColor"
+                app:hintTextColor="@color/primaryColor">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/auctionName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textMultiLine" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/startingPriceLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:hint="Starting Price"
+                app:boxStrokeColor="@color/primaryColor"
+                app:hintTextColor="@color/primaryColor"
+                app:startIconDrawable="@drawable/icon_money"
+                >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/startingPrice"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberDecimal" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/imageLinkLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:hint="Image Link"
+                app:boxStrokeColor="@color/primaryColor"
+                app:hintTextColor="@color/primaryColor"
+                app:helperTextEnabled="true"
+                app:helperText="* Image format must be enabled at last such as jpg, png"
+                app:helperTextTextColor="@color/red"
+                >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/imageLink"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textMultiLine" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/highlightsLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:hint="Highlights Text"
+                app:boxStrokeColor="@color/primaryColor"
+                app:hintTextColor="@color/primaryColor">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/highlights"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textMultiLine" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/descriptionLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:hint="Description Text"
+                app:boxStrokeColor="@color/primaryColor"
+                app:hintTextColor="@color/primaryColor">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/description"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textMultiLine" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/quantityLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:hint="Quantity"
+                app:boxStrokeColor="@color/primaryColor"
+                app:hintTextColor="@color/primaryColor">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/quantity"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/openingTimeLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:hint="Opening Time"
+                app:boxStrokeColor="@color/primaryColor"
+                app:hintTextColor="@color/primaryColor">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/openingTime"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="date"
+                    android:clickable="false"
+                    android:focusable="false"
+                    android:cursorVisible="false"
+                    android:focusableInTouchMode="false"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/closingTimeLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:hint="Closing Time"
+                app:boxStrokeColor="@color/primaryColor"
+                app:hintTextColor="@color/primaryColor">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/closingTime"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="date"
+                    android:clickable="false"
+                    android:focusable="false"
+                    android:cursorVisible="false"
+                    android:focusableInTouchMode="false"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnSubmitARequest"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:backgroundTint="@color/primaryColor"
+                android:text="Submit a request"
+                android:textColor="@color/white"
+                android:padding="10dp"
+                android:textSize="18sp" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

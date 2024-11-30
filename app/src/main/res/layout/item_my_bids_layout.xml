@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        app:cardCornerRadius="15dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            >
+
+            <!-- Auction Title -->
+            <TextView
+                android:id="@+id/auction_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:fontFamily="@font/plusjakartasans_regular"
+                android:maxLines="1"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:layout_marginStart="10dp"
+                android:text="Maryland Icon starts with my auction"
+                android:textSize="19sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/myBids_price"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/auction_date" />
+
+            <!-- Auction Date -->
+            <TextView
+                android:id="@+id/auction_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Oct 25, 2024 14:50"
+                android:padding="2dp"
+                android:layout_marginStart="10dp"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/auction_title" />
+
+            <!-- My Bids Price -->
+            <TextView
+                android:id="@+id/myBids_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="৳ 15000"
+                android:textColor="@color/primaryColor"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:paddingTop="5dp"
+                android:layout_marginEnd="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="@id/bidsCountLayout" />
+
+            <!-- Status of Bids Label -->
+            <TextView
+                android:id="@+id/tvMaxBid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Max Bid: "
+                android:textSize="14sp"
+                android:padding="2dp"
+                android:layout_marginStart="10dp"
+                app:layout_constraintTop_toBottomOf="@id/auction_date"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/tvBadgeMyBids"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="-10dp"
+                    android:background="#BA5116"
+                    android:paddingStart="10dp"
+                    android:paddingTop="5dp"
+                    android:paddingEnd="20dp"
+                    android:paddingBottom="5dp"
+                    android:text="Ongoing"
+                    android:textColor="@color/white"
+                    android:textSize="12sp"
+                    android:visibility="visible" />
+
+            </RelativeLayout>
+
+            <!-- Status of Bids Value -->
+            <RelativeLayout
+                android:id="@+id/bidsCountLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="10dp"
+                app:layout_constraintTop_toBottomOf="@+id/tvMaxBid"
+                app:layout_constraintStart_toStartOf="parent"
+                >
+                <TextView
+                    android:id="@+id/tvBidsCount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Bids Count: "
+                    android:padding="2dp"
+                    android:layout_marginStart="10dp"
+                    android:textSize="14sp"
+                     />
+
+            </RelativeLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>

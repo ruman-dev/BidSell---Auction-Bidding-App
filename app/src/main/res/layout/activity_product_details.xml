@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/productDetailsLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".activities.ProductDetailsActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/imgProductDetails"
+                android:layout_width="match_parent"
+                android:layout_height="380dp"
+                android:contentDescription="Product Item Image"
+                android:scaleType="centerCrop"
+                />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/topCardView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/imgProductDetails"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="-35dp"
+                android:layout_marginEnd="25dp"
+                android:backgroundTint="@color/white"
+                app:cardCornerRadius="12dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:baselineAligned="false"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".40"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="10dp">
+
+                        <TextView
+                            android:id="@+id/tvCurrentBid"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/plusjakartasans_bold"
+                            android:text="৳ 2500"
+                            android:textColor="@color/primaryColor"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/plusjakartasans_regular"
+                            android:text="Current Bid"
+                            android:textColor="@color/secondaryColor"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+                    <!--                     2nd layout -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".60"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="10dp">
+
+                        <TextView
+                            android:id="@+id/tvCountTimer"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/plusjakartasans_bold"
+                            android:text="0d 0h 0m 0s"
+                            android:textColor="@color/primaryColor"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tvAuctionStatus"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/plusjakartasans_regular"
+                            android:text="Auction Ends"
+                            android:textColor="@color/secondaryColor"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/product_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/topCardView"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="20dp"
+                android:text="Freedom Sale of Modern and Contemporary Art"
+                android:textSize="22sp" />
+
+            <LinearLayout
+                android:id="@+id/placeBidLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/product_title"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:orientation="horizontal"
+                android:visibility="visible">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/edMaxBidLayout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginEnd="15dp"
+                    android:layout_weight=".65"
+                    android:hint="Your Max Bid"
+                    app:boxStrokeColor="@color/primaryColor"
+                    app:hintTextColor="@color/primaryColor">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edMaxBid"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="numberDecimal" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <Button
+                    android:id="@+id/btnPlaceBid"
+                    style="@style/BigBtnStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight=".35"
+                    android:backgroundTint="@color/primaryColor"
+                    android:padding="15dp"
+                    android:text="Place Bid"
+                    android:textColor="@color/white" />
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/placeBidLayout"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="20dp">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/bidDetailCardView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:onClick="expand"
+                    app:contentPadding="12dp">
+
+                    <RelativeLayout
+                        android:id="@+id/bidDtailLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <RelativeLayout
+                            android:id="@+id/bidDtailLayoutUnder"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:id="@+id/tvBidDtail"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:fontFamily="@font/plusjakartasans_bold"
+                                android:text="Details"
+                                android:textColor="@color/primaryColor"
+                                android:textSize="20sp" />
+
+                            <ImageView
+                                android:id="@+id/imgArrowDtail"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:contentDescription="Show and Hide Details"
+                                android:src="@drawable/icon_drop_down" />
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:id="@+id/bidDtailCol"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/bidDtailLayoutUnder"
+                            android:paddingTop="10dp"
+                            android:visibility="gone">
+
+                            <RelativeLayout
+                                android:id="@+id/bidDtailCol1"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginBottom="10dp">
+
+                                <TextView
+                                    android:id="@+id/highlightsTitle"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/plusjakartasans_regular"
+                                    android:text="Highlights"
+                                    android:textColor="@color/primaryColor"
+                                    android:textSize="17sp" />
+
+                                <View
+                                    android:id="@+id/border1"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="1dp"
+                                    android:layout_below="@id/highlightsTitle"
+                                    android:layout_marginTop="10dp"
+                                    android:layout_marginBottom="10dp"
+                                    android:background="#9AC6C6C6" />
+
+                                <TextView
+                                    android:id="@+id/tvHighlights"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@id/border1"
+                                    android:text="\u2022 No Text Found!\n\u2022 Now Text Found sdfgnafgahfahfhwa98fh9w8ehfaifhf8hf98hsr" />
+
+                                <TextView
+                                    android:id="@+id/descTitle"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@id/tvHighlights"
+                                    android:layout_marginTop="20dp"
+                                    android:fontFamily="@font/plusjakartasans_regular"
+                                    android:text="Description"
+                                    android:textColor="@color/primaryColor"
+                                    android:textSize="17sp" />
+
+                                <View
+                                    android:id="@+id/border3"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="1dp"
+                                    android:layout_below="@id/descTitle"
+                                    android:layout_marginTop="10dp"
+                                    android:layout_marginBottom="10dp"
+                                    android:background="#9AC6C6C6" />
+
+                                <TextView
+                                    android:id="@+id/tvDesc"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@id/border3"
+                                    android:text="No Text Found!" />
+                            </RelativeLayout>
+                        </RelativeLayout>
+                    </RelativeLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/bidHistoryCardView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/bidDetailCardView"
+                    android:layout_marginTop="20dp"
+                    android:background="@color/white"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:onClick="expand"
+                    app:contentPadding="12dp">
+
+                    <RelativeLayout
+                        android:id="@+id/bidHistoryLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <RelativeLayout
+                            android:id="@+id/bidHistoryLayoutUnder"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:id="@+id/tvBidHistory"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:fontFamily="@font/plusjakartasans_bold"
+                                android:text="History"
+                                android:textColor="@color/primaryColor"
+                                android:textSize="20sp" />
+
+                            <ImageView
+                                android:id="@+id/imgArrowHistory"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:contentDescription="Show and Hide History"
+                                android:src="@drawable/icon_drop_down" />
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:id="@+id/bidHistoryCol"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/bidHistoryLayoutUnder"
+                            android:paddingTop="10dp"
+                            android:visibility="gone">
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/bidHistoryRecycler"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:clipToPadding="false"
+                                android:divider="#8E8E8E"
+                                android:dividerHeight="1dp"
+                                android:listSelector="@android:color/transparent"
+                                android:padding="0dp"
+                                android:scrollbars="none" />
+                        </RelativeLayout>
+                    </RelativeLayout>
+                </com.google.android.material.card.MaterialCardView>
+            </RelativeLayout>
+        </RelativeLayout>
+    </ScrollView>
+</RelativeLayout>

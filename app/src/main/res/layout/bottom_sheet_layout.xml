@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_dialog"
+    >
+
+    <View
+        android:id="@+id/topView"
+        android:layout_width="80dp"
+        android:layout_height="3dp"
+        android:background="@drawable/shape_view"
+        android:layout_marginTop="5dp"
+        android:layout_centerHorizontal="true"
+
+        />
+
+    <TextView
+        android:id="@+id/tvSummary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/plusjakartasans_bold"
+        android:text="Auction Summary"
+        android:textColor="@color/primaryColor"
+        android:textSize="20sp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/topView"
+        android:layout_centerHorizontal="true"
+        />
+
+<!--    <RelativeLayout-->
+<!--        android:id="@+id/bidSummaryRow1"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="15dp"-->
+<!--        android:layout_marginStart="15dp"-->
+<!--        android:layout_marginEnd="15dp"-->
+<!--        android:layout_below="@+id/tvSummary"-->
+<!--        >-->
+
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Number of Bids ->"-->
+<!--            android:textSize="16sp"-->
+<!--            />-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/tvNoBidsSum"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_alignParentEnd="true"-->
+<!--            android:text="45"-->
+<!--            android:textSize="16sp"-->
+<!--            />-->
+
+<!--    </RelativeLayout>-->
+
+    <RelativeLayout
+        android:id="@+id/bidSummaryRow2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvSummary"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Quantity ->"
+            android:textSize="16sp"
+            />
+
+        <TextView
+            android:id="@+id/tvQuantitySum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:textSize="16sp"
+            android:text="30"
+
+            />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/bidSummaryRow3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/bidSummaryRow2"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Listing Number ->"
+            android:textSize="16sp"
+            />
+
+        <TextView
+            android:id="@+id/tvListingNoSum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:text="43748210285"
+            android:textSize="16sp"
+            />
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/bidSummaryRow4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/bidSummaryRow3"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Opening Date ->"
+            android:textSize="16sp"
+            />
+
+        <TextView
+            android:id="@+id/tvOpenDateSum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:text="2023-07-23 13:10:11"
+            android:textSize="16sp"
+            />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/bidSummaryRow5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/bidSummaryRow4"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Closing Date ->"
+            android:textSize="16sp"
+            />
+
+        <TextView
+            android:id="@+id/tvCloseDateSum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:text="2023-08-22 12:00:00"
+            android:textSize="16sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvCloseDateSum"
+            android:layout_alignParentEnd="true"
+            android:text="* (Extendable)"
+            android:textColor="@color/red"
+            android:textSize="10sp"
+            />
+
+    </RelativeLayout>
+
+</RelativeLayout>

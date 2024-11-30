@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="BaseButtonStyle">
+        <item name="cornerRadius">18dp</item>
+        <item name="strokeColor">@color/white</item>
+        <item name="strokeWidth">2dp</item>
+    </style>
+
+    <style name="BigBtnStyle" parent="BaseButtonStyle">
+        <item name="cornerRadius">18dp</item>
+    </style>
+
+    <style name="DialogAnimation" >
+        <item name="android:windowEnterAnimation">@anim/slide_in_bottom</item>
+        <item name="android:windowExitAnimation">@anim/slide_out_bottom</item>
+    </style>
+</resources>

@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "94890715819",
+    "project_id": "bidmaster-5cf93",
+    "storage_bucket": "bidmaster-5cf93.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:94890715819:android:ece7a8e13e4e96803725ee",
+        "android_client_info": {
+          "package_name": "com.rumanweb.bidmaster"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBwj1Y0aU_vgZhpE_ZejHtgb_NDFIbcGrc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:94890715819:android:056a43eae5610db93725ee",
+        "android_client_info": {
+          "package_name": "com.rumanweb.bidsell"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBwj1Y0aU_vgZhpE_ZejHtgb_NDFIbcGrc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

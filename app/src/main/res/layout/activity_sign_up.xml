@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".activities.SignUpActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/signUpToolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:navigationIcon="@drawable/img_back"
+                app:titleTextColor="@color/primaryColor" />
+
+            <TextView
+                android:id="@+id/tv_welcome_back"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="80dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:gravity="center"
+                android:text="Get Started"
+                android:textColor="@color/primaryColor"
+                android:textSize="28sp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/signUp_fullName_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_welcome_back"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="15dp"
+                android:hint="Full Name"
+                app:boxStrokeColor="@color/primaryColor"
+                app:hintTextColor="@color/primaryColor">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/signUpName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/signUp_userName_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/signUp_fullName_layout"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="15dp"
+                android:hint="Username"
+                app:boxStrokeColor="@color/primaryColor"
+                app:hintTextColor="@color/primaryColor">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/signUpUserName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/signUp_mobile_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/signUp_userName_layout"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="15dp"
+                android:hint="Phone Number"
+                app:boxStrokeColor="@color/primaryColor"
+                app:hintTextColor="@color/primaryColor">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/signUpMobile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="phone|number" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/signUp_email_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/signUp_mobile_layout"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="15dp"
+                android:hint="Email"
+                app:boxStrokeColor="@color/primaryColor"
+                app:hintTextColor="@color/primaryColor">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/signUpEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textEmailAddress" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/signUp_password_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/signUp_email_layout"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginEnd="15dp"
+                android:hint="Password"
+                app:boxStrokeColor="@color/primaryColor"
+                app:hintTextColor="@color/primaryColor"
+                app:passwordToggleEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/signUpPass"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/signUp_confirm_password_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/signUp_password_layout"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginEnd="15dp"
+                android:hint="Confirm Password"
+                app:boxStrokeColor="@color/primaryColor"
+                app:hintTextColor="@color/primaryColor"
+                app:passwordToggleEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/signUpConfirmPass"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <FrameLayout
+                android:id="@+id/signUpLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/signUp_confirm_password_layout"
+                android:layout_marginTop="10dp">
+
+                <ProgressBar
+                    android:id="@+id/progressBarSignUp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:indeterminateTint="@color/primaryColor"
+                    android:indeterminateTintMode="src_in"
+                    android:visibility="gone" />
+
+                <Button
+                    android:id="@+id/signUpBtn"
+                    style="@style/BigBtnStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="25dp"
+                    android:layout_marginEnd="20dp"
+                    android:backgroundTint="@color/primaryColor"
+                    android:padding="15dp"
+                    android:text="Sign up"
+                    android:textColor="@color/white"
+                    android:textSize="16sp" />
+            </FrameLayout>
+            <!--             <RelativeLayout -->
+            <!--                 android:id="@+id/signUp_divider_layout" -->
+            <!--                 android:layout_width="match_parent" -->
+            <!--                 android:layout_height="wrap_content" -->
+            <!--                 android:layout_below="@id/signUpLayout" -->
+            <!--                 android:layout_marginTop="15dp" -->
+            <!--                 > -->
+            <!--                 <TextView -->
+            <!--                     android:id="@+id/tvDividerSignUp" -->
+            <!--                     android:layout_width="wrap_content" -->
+            <!--                     android:layout_height="wrap_content" -->
+            <!--                     android:layout_centerInParent="true" -->
+            <!--                     android:layout_marginLeft="10dp" -->
+            <!--                     android:layout_marginRight="10dp" -->
+            <!--                     android:text="SignUp with" -->
+            <!--                     android:textColor="#65000000"/> -->
+            <!--                 <View -->
+            <!--                     android:layout_width="match_parent" -->
+            <!--                     android:layout_height="2dp" -->
+            <!--                     android:layout_centerVertical="true" -->
+            <!--                     android:layout_marginStart="16dp" -->
+            <!--                     android:layout_toStartOf="@id/tvDividerSignUp" -->
+            <!--                     android:background="#36000000" -->
+            <!--                     /> -->
+            <!--                 <View -->
+            <!--                     android:layout_width="match_parent" -->
+            <!--                     android:layout_height="2dp" -->
+            <!--                     android:layout_centerVertical="true" -->
+            <!--                     android:layout_marginEnd="16dp" -->
+            <!--                     android:layout_toEndOf="@id/tvDividerSignUp" -->
+            <!--                     android:background="#36000000" -->
+            <!--                     /> -->
+            <!--             </RelativeLayout> -->
+            <!--             <LinearLayout -->
+            <!--                 android:id="@+id/signUpAuthWithSocialMediaLayout" -->
+            <!--                 android:layout_width="match_parent" -->
+            <!--                 android:layout_height="wrap_content" -->
+            <!--                 android:layout_below="@id/signUp_divider_layout" -->
+            <!--                 android:weightSum="8" -->
+            <!--                 android:layout_marginTop="20dp" -->
+            <!--                 android:layout_marginStart="30dp" -->
+            <!--                 android:layout_marginEnd="30dp" -->
+            <!--                 android:gravity="center" -->
+            <!--                 > -->
+            <!--                 <ImageView -->
+            <!--                     android:id="@+id/sigUpWithGoogle" -->
+            <!--                     android:layout_width="48dp" -->
+            <!--                     android:layout_height="48dp" -->
+            <!--                     android:src="@drawable/google" -->
+            <!--                     android:layout_weight="1" -->
+            <!--                     /> -->
+            <!--                 <ImageView -->
+            <!--                     android:id="@+id/sigUpWithFacebook" -->
+            <!--                     android:layout_width="48dp" -->
+            <!--                     android:layout_height="48dp" -->
+            <!--                     android:src="@drawable/facebook" -->
+            <!--                     android:layout_weight="1" -->
+            <!--                     /> -->
+            <!--                 <ImageView -->
+            <!--                     android:id="@+id/sigUpWithApple" -->
+            <!--                     android:layout_width="48dp" -->
+            <!--                     android:layout_height="48dp" -->
+            <!--                     android:src="@drawable/apple" -->
+            <!--                     android:layout_weight="1" -->
+            <!--                     /> -->
+            <!--             </LinearLayout> -->
+            <!--             <LinearLayout -->
+            <!--                 android:layout_width="match_parent" -->
+            <!--                 android:layout_height="match_parent" -->
+            <!--                 android:orientation="horizontal" -->
+            <!--                 android:layout_below="@id/signUpAuthWithSocialMediaLayout" -->
+            <!--                 android:gravity="center" -->
+            <!--                 android:layout_marginTop="15dp" -->
+            <!--                 > -->
+            <!--                 <TextView -->
+            <!--                     android:id="@+id/tvDontHaveAccount" -->
+            <!--                     android:layout_width="wrap_content" -->
+            <!--                     android:layout_height="wrap_content" -->
+            <!--                     android:layout_marginStart="10dp" -->
+            <!--                     android:layout_marginEnd="5dp" -->
+            <!--                     android:text="Already have an account?" -->
+            <!--                     android:textColor="#65000000"/> -->
+            <!--                 <TextView -->
+            <!--                     android:id="@+id/redirectToSignIn" -->
+            <!--                     android:layout_width="wrap_content" -->
+            <!--                     android:layout_height="wrap_content" -->
+            <!--                     android:text="Sign in" -->
+            <!--                     android:textColor="@color/primaryColor" -->
+            <!--                     /> -->
+            <!--             </LinearLayout> -->
+        </RelativeLayout>
+    </ScrollView>
+</RelativeLayout>
