@@ -4,7 +4,8 @@ BidSell is a powerful online auction system that provides users and administrato
 
 ## User Panel Features
 
-![BidSell - User Panel Image](https://github.com/user-attachments/assets/c7fdca3f-9479-45b7-8f67-aee786ba7172)
+![BidSell - User Panel Image](https://github.com/user-attachments/assets/2d54dc08-d849-4dbc-b4af-5ea6ebf8d6c8)
+
 
 ### 1. **Discover Auctions**
 
@@ -43,8 +44,7 @@ BidSell is a powerful online auction system that provides users and administrato
 
 ## Admin Panel Features
 
-![BidSell - Admin Panel Image](https://github.com/user-attachments/assets/6a8f6374-4c12-4808-ae2a-2065a73f7981)
-
+![BidSell - Admin Panel Image](https://github.com/user-attachments/assets/4cc3ea52-371c-47c7-a8a8-f48f59ad2e7a)
 
 ### 1. **Home Screen Overview**
 
