@@ -1,88 +1,79 @@
 # BidSell - An Online Auction Marketplace
 
-BidSell is a powerful online auction system that provides users and administrators with comprehensive tools to bid, manage auctions, and oversee transactions. This application is divided into two modules: **User Panel** and **Admin Panel**, each with unique functionalities designed to streamline the auctioning experience.
+BidSell is a powerful online auction system that provides users and administrators with comprehensive tools to bid, manage auctions, and oversee transactions. This application is divided into two modules: **User Panel** and **Admin Panel**, each with unique functionalities to streamline the auctioning experience.
 
 ## User Panel Features
 
-### 1. **Onboarding**
+![BidSell - User Panel Image](https://github.com/user-attachments/assets/c7fdca3f-9479-45b7-8f67-aee786ba7172)
 
-- An intuitive introduction to the platform with sign-up and sign-in options.
-
-### 2. **Sign-Up and Sign-In**
-
-- New users can register by entering their details.
-- Existing users can securely log in to their accounts.
-
-### 3. **Discover Auctions**
+### 1. **Discover Auctions**
 
 - Browse through all active auctions.
-- Filter and sort auctions based on user preferences.
+- Filter and sort auctions based on timings.
 
-### 4. **Auction Stories**
+### 2. **Auction Stories**
 
 - View detailed descriptions and high-quality images for each auction.
 - Real-time countdown for auction expiration.
 
-### 5. **Bid Management**
+### 3. **Bid Management**
 
 - Place bids on desired items.
 - View the highest bids and participate in competitive auctions.
 
-### 6. **Auction History**
+### 4. **Auction History**
 
 - Track the bidding history for each user.
 - Access details and highlights of past auctions.
 
-### 7. **User Features**
+### 5. **User Features**
 
 - Change passwords, view transaction history, and manage personal details.
-- Invite friends and earn rewards.
+- Invite friends and family.
 
-### 8. **Privacy and Security**
+### 6. **Privacy and Security**
 
 - Comprehensive user protection with password management tools.
 
-### 9. **Earn Through Auction Creation**
+### 7. **Auction Creation Request**
 
 - Submit auction requests with item details, starting price, and images.
-- Gain rewards by hosting successful auctions.
 
 ---
 
 ## Admin Panel Features
 
-### 1. **Login**
+![BidSell - Admin Panel Image](https://github.com/user-attachments/assets/6a8f6374-4c12-4808-ae2a-2065a73f7981)
 
-- A secure login is needed for administrators to access the control panel.
 
-### 2. **Home Screen Overview**
+### 1. **Home Screen Overview**
 
 - Summary of active users, auctions, bids, transactions, and pending requests.
 
-### 3. **Manage Users**
+### 2. **Manage Users**
 
 - View, search, and control user accounts from a centralized location.
 
-### 4. **Manage Auctions**
+### 3. **Manage Auctions**
 
 - Oversee all auctions with details like starting price, dates, and item descriptions.
 
-### 5. **Manage Bids**
+### 4. **Manage Bids**
 
 - Track and manage user bids for various auctions.
 
-### 6. **Transaction Information**
+### 5. **Transaction Information**
 
 - Monitor and track all transactions for transparency and accuracy.
 
-### 7. **Auction Requests**
+### 6. **Auction Requests**
 
 - Review and approve user-submitted auction requests.
 - Ensure item and auction quality meets platform standards.
 
-### 8. **Create Auctions**
+### 7. **Create Auctions**
 
-- Directly create and publish auctions with required details like images, quantity, and timelines.
+-  Create and publish auctions with required details like images, quantity, and timelines by submitting a request.
 
 ---
 
@@ -110,55 +101,12 @@ BidSell is a powerful online auction system that provides users and administrato
 
 ---
 
-## Contact
+## References
 
-For support or inquiries, contact [support@bidsell.com](mailto\:support@bidsell.com).
-
-```markdown
-# BidSell - Auction Marketplace
-
-BidSell is a comprehensive platform for online auctions. It offers tools for users and administrators to manage bids, auctions, and transactions.
-
-## User Panel
-
-### Features:
-- **Onboarding**: Guided app introduction.
-- **Sign-Up**: Register accounts.
-- **Sign-In**: Login securely.
-- **Discover Auctions**: Browse and filter active auctions.
-- **Auction Stories**: View details, images, and countdowns.
-- **Bid Management**: Place and track bids.
-- **History**: Access bid history and past auction details.
-- **User Features**: Manage accounts, invite friends, and earn rewards.
-- **Privacy & Security**: Password management.
-- **Create Auctions**: Submit items for auction.
-
-## Admin Panel
-
-### Features:
-- **Login**: Secure admin access.
-- **Overview**: Dashboard summary of activities.
-- **Manage Users**: Control user accounts.
-- **Manage Auctions**: Oversee auction details.
-- **Bids**: Track user bids.
-- **Transactions**: Monitor payments.
-- **Requests**: Approve auction submissions.
-- **Create Auctions**: Publish auctions.
-
-## Usage
-
-### For Users:
-- Register, discover, and participate in auctions.
-
-### For Admins:
-- Log in, manage platform activities, and approve auctions.
-
-## Benefits
-- For Buyers: Easy access to auctions.
-- For Sellers: Create and manage auctions.
-- For Admins: Platform control and data tracking.
+User Panel : https://github.com/ruman-dev/BidSell-AuctionBiddingApp
+Admin Panel : https://github.com/ruman-dev/BidSell_Admin_Panel
 
 ## Contact
-Email: [support@bidsell.com](mailto:support@bidsell.com)
-```
+
+For support or inquiries, contact [ruman.cse49@gmail.com](mailto\:ruman.cse49@gmail.com).
 
