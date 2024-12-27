@@ -103,8 +103,8 @@ BidSell is a powerful online auction system that provides users and administrato
 
 ## References
 
-User Panel : https://github.com/ruman-dev/BidSell-AuctionBiddingApp
-Admin Panel : https://github.com/ruman-dev/BidSell_Admin_Panel
+- User Panel:   https://github.com/ruman-dev/BidSell-AuctionBiddingApp
+- Admin Panel:  https://github.com/ruman-dev/BidSell_Admin_Panel
 
 ## Contact
 
